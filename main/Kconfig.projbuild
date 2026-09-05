@@ -399,6 +399,9 @@ choice BOARD_TYPE
     config BOARD_TYPE_OTTO_ROBOT
         bool "Otto Robot"
         depends on IDF_TARGET_ESP32S3
+    config BOARD_TYPE_XIAOZHI_BIPED
+        bool "XiaoZhi Biped Robot (小智双足机器人)"
+        depends on IDF_TARGET_ESP32S3
     config BOARD_TYPE_QUANDONG_S3_DEV
         bool "Quandong ESP32-S3 Development Board (全动)"
         depends on IDF_TARGET_ESP32S3

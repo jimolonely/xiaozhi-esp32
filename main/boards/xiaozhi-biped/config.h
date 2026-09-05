@@ -1,0 +1,71 @@
+#ifndef _BOARD_CONFIG_H_
+#define _BOARD_CONFIG_H_
+
+#include <driver/gpio.h>
+
+// 音频 I2S - INMP441 麦克风 + MAX98357A 功放
+#define AUDIO_INPUT_SAMPLE_RATE 16000
+#define AUDIO_OUTPUT_SAMPLE_RATE 24000
+#define AUDIO_USE_SIMPLEX true
+
+#define AUDIO_MIC_WS_GPIO    GPIO_NUM_4
+#define AUDIO_MIC_SCK_GPIO   GPIO_NUM_5
+#define AUDIO_MIC_DIN_GPIO   GPIO_NUM_6
+
+#define AUDIO_SPK_DOUT_GPIO  GPIO_NUM_7
+#define AUDIO_SPK_BCLK_GPIO  GPIO_NUM_15
+#define AUDIO_SPK_LRCK_GPIO  GPIO_NUM_16
+
+// OLED 显示屏 (I2C)
+#define DISPLAY_I2C_SDA_PIN  GPIO_NUM_41
+#define DISPLAY_I2C_SCL_PIN  GPIO_NUM_42
+
+// PCA9685 舵机驱动板 (I2C)
+#define PCA9685_I2C_SDA_PIN  GPIO_NUM_1
+#define PCA9685_I2C_SCL_PIN  GPIO_NUM_2
+#define PCA9685_I2C_ADDR     0x70
+#define PCA9685_I2C_FREQ_HZ  100000
+
+// HC-SR04 超声传感器
+#define ULTRASONIC_TRIG_PIN  GPIO_NUM_8
+#define ULTRASONIC_ECHO_PIN  GPIO_NUM_9
+
+// 板载按钮
+#define BOOT_BUTTON_GPIO GPIO_NUM_0
+
+// 双足舵机 PCA9685 通道分配 (0-15)
+// 每条腿：髋关节(前后摆) + 膝关节(抬脚)
+#define SERVO_LEFT_HIP_CHANNEL    0
+#define SERVO_LEFT_KNEE_CHANNEL   1
+#define SERVO_RIGHT_HIP_CHANNEL   2
+#define SERVO_RIGHT_KNEE_CHANNEL  3
+#define BIPED_SERVO_COUNT         4
+
+// 双足机器人常量
+#define BIPED_SERVO_FREQ_HZ       50   // 标准舵机频率
+#define BIPED_SERVO_MIN_PULSE     500  // 0度对应的脉冲宽度 (微秒)
+#define BIPED_SERVO_MAX_PULSE     2500 // 180度对应的脉冲宽度 (微秒)
+#define BIPED_SERVO_CENTER_ANGLE  90   // 中立位置角度
+#define BIPED_SERVO_RANGE         60   // 摆动范围 (从中心向两侧各)
+
+// 随机游走参数
+#define RANDOM_WALK_MIN_INTERVAL_MS   5000
+#define RANDOM_WALK_MAX_INTERVAL_MS   30000
+#define RANDOM_WALK_DEFAULT_INTERVAL_MS 15000
+#define RANDOM_WALK_STEP_DURATION_MS  600
+
+// 避障参数
+#define OBSTACLE_DETECT_DISTANCE_CM   25
+#define OBSTACLE_BACKOFF_DISTANCE_CM  15
+
+// 记忆存储参数
+#define BIPED_MEMORY_NAMESPACE  "biped_mem"
+#define BIPED_MEMORY_MAX_ENTRIES 64
+#define BIPED_MEMORY_ENTRY_MAX_LEN 256
+
+// 步行步态参数
+#define GAIT_STEP_HEIGHT_DEG     25  // 抬脚高度 (膝关节)
+#define GAIT_HIP_SWING_DEG       30  // 髋关节摆动幅度
+#define GAIT_DEFAULT_SPEED_MS    300 // 单步时长
+
+#endif  // _BOARD_CONFIG_H_

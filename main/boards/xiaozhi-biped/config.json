@@ -1,0 +1,15 @@
+{
+    "type": "xiaozhi-biped",
+    "target": "esp32s3",
+    "builds": [
+        {
+            "name": "xiaozhi-biped",
+            "build_options": {
+                "camera_enabled": false
+            },
+            "sdkconfig_append": [
+                "CONFIG_BIPED_ENABLED=y"
+            ]
+        }
+    ]
+}
